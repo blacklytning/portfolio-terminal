@@ -1104,7 +1104,7 @@ const Terminal = () => {
             <div className="w-3 h-3 rounded-full bg-green-500"></div>
           </div>
           <span className="font-mono text-sm" style={{ color: theme.text }}>
-            prathamesh@portfolio ~ carbonfox
+            prathamesh@portfolio ~ kitty
           </span>
         </div>
       </div>

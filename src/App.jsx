@@ -1116,7 +1116,7 @@ const Terminal = () => {
           ...history
         ]} theme={theme} />
         
-        <div className="p-4 border-t" style={{ borderColor: theme.secondary }}>
+        <div className="p-4 border-t" style={{ borderColor: theme.secondary, backgroundColor: theme.bg }}>
           <TerminalInput
             onCommand={processCommand}
             commandHistory={commandHistory}

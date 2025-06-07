@@ -1110,7 +1110,7 @@ const Terminal = () => {
       </div>
 
       {/* Terminal Body */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col overflow-hidden">
         <TerminalOutput history={[
           { content: <WelcomeScreen theme={theme} />, type: 'component' },
           ...history

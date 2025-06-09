@@ -1159,18 +1159,52 @@ const ThemeProvider = ({ children }) => {
   );
 };
 
+// Starry Background Component
+const StarryBackground = () => {
+  return (
+    <div className="fixed inset-0 overflow-hidden" style={{ backgroundColor: '#0a0a0a' }}>
+      {[...Array(100)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute rounded-full animate-twinkle"
+          style={{
+            width: Math.random() * 2 + 1 + 'px',
+            height: Math.random() * 2 + 1 + 'px',
+            left: Math.random() * 100 + '%',
+            top: Math.random() * 100 + '%',
+            backgroundColor: '#fff',
+            opacity: Math.random(),
+            animationDelay: Math.random() * 5 + 's',
+            animationDuration: Math.random() * 3 + 2 + 's'
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
+const styles = `
+  @keyframes twinkle {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  .animate-twinkle {
+    animation: twinkle infinite;
+  }
+`;
+
+const styleSheet = document.createElement("style");
+styleSheet.innerText = styles;
+document.head.appendChild(styleSheet);
+
 // Main App Component
 const App = () => {
   return (
     <ThemeProvider>
-      <div 
-        className="h-screen w-screen overflow-hidden relative"
-        style={{ 
-          backgroundImage: 'url("https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2029&auto=format&fit=crop")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
-      >
+      <div className="h-screen w-screen overflow-hidden relative">
+        <StarryBackground />
         {/* Terminal Window */}
         <div
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-2xl overflow-hidden"

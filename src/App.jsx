@@ -1009,8 +1009,12 @@ const TerminalOutput = ({ history, theme }) => {
   return (
     <div 
       ref={outputRef}
-      className="flex-1 overflow-auto font-mono text-sm whitespace-pre-wrap break-words p-4"
-      style={{ backgroundColor: theme.bg }}
+      className="flex-1 overflow-auto font-mono text-sm whitespace-pre-wrap break-words p-4 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-transparent hover:scrollbar-thumb-gray-400"
+      style={{ 
+        backgroundColor: theme.bg,
+        scrollbarWidth: 'thin',
+        scrollbarColor: `${theme.secondary} transparent`
+      }}
     >
       {history.map((item, i) => (
         <div 
@@ -1088,7 +1092,7 @@ const Terminal = () => {
   return (
     <div 
       ref={terminalRef}
-      className="h-screen flex flex-col cursor-text"
+      className="h-full flex flex-col cursor-text"
       style={{ backgroundColor: theme.bg, color: theme.text }}
       onClick={handleTerminalClick}
     >
@@ -1159,8 +1163,26 @@ const ThemeProvider = ({ children }) => {
 const App = () => {
   return (
     <ThemeProvider>
-      <div className="font-mono">
-        <Terminal />
+      <div 
+        className="h-screen w-screen overflow-hidden relative"
+        style={{ 
+          backgroundImage: 'url("https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2029&auto=format&fit=crop")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
+        {/* Terminal Window */}
+        <div
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-2xl overflow-hidden"
+          style={{
+            width: '1000px',
+            height: '600px'
+          }}
+        >
+          <div className="font-mono h-full">
+            <Terminal />
+          </div>
+        </div>
       </div>
     </ThemeProvider>
   );

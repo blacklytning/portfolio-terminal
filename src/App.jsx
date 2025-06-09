@@ -423,7 +423,7 @@ const MatrixAnimation = ({ theme, onStop }) => {
   return (
     <canvas
       ref={canvasRef}
-      className="w-full h-64 cursor-pointer border rounded"
+      className="w-full h-full cursor-pointer border rounded"
       style={{ backgroundColor: theme.bg }}
     />
   );
